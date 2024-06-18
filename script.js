@@ -1,11 +1,11 @@
 
-let userChoice = prompt("type your choice!")
+
 let humanScore = 0;
 let computerScore = 0;
 
-const humanSelection = getHumanChoice(userChoice);
-const computerSelection = getComputerChoice();
-function getHumanChoice(userChoice) {
+
+function getHumanChoice() {
+    let userChoice = prompt("Type your choice!")
       if (userChoice === null || userChoice === undefined) {
         alert("No input provided. Try again.");
         return null;
@@ -33,21 +33,37 @@ function playRound(humanChoice, computerChoice) {
     console.log(humanChoice, computerChoice);
     
     if (humanChoice === computerChoice) {
-        console.log("It's a Tie!!!");
+        return "It's a Tie!!!";
     } else if ((humanChoice === "Rock" && computerChoice === "Scissors") ||
                (humanChoice === "Scissors" && computerChoice === "Paper") ||
                (humanChoice === "Paper" && computerChoice === "Rock")) {
         humanScore++;
-        console.log(`Congratulations Human wins! ${humanChoice} beats ${computerChoice}`);
+        return `Congratulations Human wins! ${humanChoice} beats ${computerChoice}`;
     } else {
         computerScore++;
-        console.log(`Congratulations Computer wins! ${computerChoice} beats ${humanChoice}`);
+        return `Congratulations Computer wins! ${computerChoice} beats ${humanChoice}`;
     }
 }
-playRound(humanSelection,computerSelection)
 
 
-function playGame() {
-
+function playGame(num) {
+    for (i = 0; i < num; i++) {
+      let humanChoice = getHumanChoice();
+        if (humanChoice === null) {
+            console.log("Game cancelled.");
+            return;
+        }
+        let computerChoice = getComputerChoice()
+        let result = playRound(humanChoice, computerChoice)
+        console.log(result)
+        console.log(`"computerScore" = ${computerScore}; "humanScore" = ${humanScore}`)
+    }
+    if (computerScore > humanScore) {
+        return `"Computer win! "${computerScore} ":" ${humanScore}`;
+    } else if (humanScore > computerScore)  {
+         return `"Human win! "${humanScore} ":" ${computerScore}`;
+    } else return "It's a Tie!"
+       
+   
 }
 
