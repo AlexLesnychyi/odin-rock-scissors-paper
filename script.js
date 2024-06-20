@@ -48,6 +48,11 @@ function updaTedResults(message) {
 
     resultD.textContent = message + ` HumanScore= ${humanScore}  ComputerScore ${computerScore}`;
 }
+function resetGame() {
+    humanScore = 0
+    computerScore=0
+    resultD.textContent= " Let's Begin!"
+}
 function checkWinner() {
     if (humanScore >= 5) {
         alert("Human wins the game!");
@@ -108,23 +113,4 @@ papBtn.addEventListener('click', (e) => {
     updaTedResults(result);
     checkWinner()
    })
-// function playGame(num) {
-//     for (i = 0; i < num; i++) {
-//       let humanChoice = getHumanChoice();
-//         if (humanChoice === null) {
-//             console.log("Game cancelled.");
-//             return;
-//         }
-//         let computerChoice = getComputerChoice()
-//         let result = playRound(humanChoice, computerChoice)
-//         console.log(result)
-//         console.log(`"computerScore" = ${computerScore}; "humanScore" = ${humanScore}`)
-//     }
-//     if (computerScore > humanScore) {
-//         return `"Computer win! "${computerScore} ":" ${humanScore}`;
-//     } else if (humanScore > computerScore)  {
-//          return `"Human win! "${humanScore} ":" ${computerScore}`;
-//     } else return "It's a Tie!"
-       
-// }
 
